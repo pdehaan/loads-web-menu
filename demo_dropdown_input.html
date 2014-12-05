@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<meta charset="UTF-8">
+<title></title>
+
+<link rel="stylesheet" href="css/menus.css">
+<link rel="stylesheet" href="js/dijit/themes/claro/claro.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <!--<script type="text/javascript" src="js/angular.min.js"></script>-->
+<script>dojoConfig = {parseOnLoad: true}</script>
+<script src='js/dojo/dojo.js'></script>
+<script src='js/menus.js'></script>
+
+</head>
+<body>
+<div class="claro">
+<input id="stateSelect">
+<p><button onClick="alert(dijit.byId('stateSelect').get('value'))">Get value</button></p>
+</div>
+
+</body>
+</html>

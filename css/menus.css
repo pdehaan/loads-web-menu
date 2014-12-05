@@ -9,7 +9,10 @@ td {
     padding: 8px;
 }
 
-table.json {
-    width: 60%;
+th {
+    background-color: #DDDDDD;
+}
+
+td.json {
     background-color: #EEEEEE;
 }

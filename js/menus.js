@@ -20,7 +20,8 @@ function states(Memory, ComboBox){
 
 });
 
-//
-//function theController($scope) {
-//  $scope.update = angular.copy.person;
-//}
+
+function theController($scope) {
+    var menu = angular.copy.menu;
+    $scope.update = menu; //angular.copy.menu;
+}
