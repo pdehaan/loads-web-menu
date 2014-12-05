@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<meta charset="UTF-8">
+<title></title>
+<style>
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+td {
+    padding: 10px;
+}
+</style>
+
+<link rel="stylesheet" href="js/dijit/themes/claro/claro.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <!--<script type="text/javascript" src="js/angular.min.js"></script>-->
+<script>dojoConfig = {parseOnLoad: true}</script>
+<script src='js/dojo/dojo.js'></script>
+<script src='js/menus.js'></script>
+
+</head>
+<body>
+<div class="claro">
+<input id="stateSelect">
+<p><button onClick="alert(dijit.byId('stateSelect').get('value'))">Get value</button></p>
+</div>
+
+see: https://github.com/loads/
+see: https://github.com/mozilla/fxa-auth-server/tree/master/test/load
+
+
+"name": "Push Testing"</br>
+"strategies": </br>
+<hr>
+"name": "Single Server",</br>
+"description": "Single PushGo server, 2 sets of testers for peak of 200k connections.",</br>
+"container_sets": [</br>
+<hr>
+<div ng-controller="theController">
+<form>
+<table>
+    <tr><th colspan="2">Cluster Menu</td></tr>
+<tr>
+    <th>Label</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <td>Name</td>
+    <td><input type="text" placeholder="Test Cluster"></td>
+</tr>
+
+<!------------>
+<tr>
+<td>Instance Count</td>
+<td>
+<select id="instance_count" name="instance_region">
+    <option value="instance_count" selected>1</option>
+    <option value="instance_count">2</option>
+    <option value="instance_count">3</option>
+    <option value="instance_count">4</option>
+    <option value="instance_count">5</option>
+    <option value="instance_count">6</option>
+    <option value="instance_count">7</option>
+    <option value="instance_count">8</option>
+    <option value="instance_count">9</option>
+    <option value="instance_count">10</option>
+</select>
+</td>
+</tr>
+
+<!------------>
+<tr>
+<td>Instance Type</td>
+<td>
+<select id="instance_type" name="instance_type">
+<option value="t2.micro">t2.micro</option>
+<option value="t2.small">t2.small</option>
+<option value="t2.medium">t2.medium</option>
+<option value="m3.medium" selected>m3.medium</option>
+<option value="m3.large">m3.large</option>
+<option value="m3.xlarge">m3.xlarge</option>
+<option value="m3.2xlarge">m3.2xlarge</option>
+</select>
+</td>
+</tr>
+    <!------------>
+<tr>
+<td>Run Max Time (range: 700 - 850?)</td>
+<td><input id="run_max_time" name="run_max_time" size="8" maxlength="8"
+           type="text" placeholder="700">
+</td>
+</tr>
+<!------------>
+<tr>
+<td>Run Delay (range: 10 - 130?)</td>
+<td><input id="run_delay" name="run_delay" size="8" maxlength="8"
+           type="text" placeholder="10">
+</td>
+</tr>
+<!------------>
+<tr>
+<td>Container Name</td>
+<td><input id="container_name" name="container_name" size="35" maxlength="35"
+           type="text" placeholder="kitcambridge/pushtest:latest">
+</td>
+</tr>
+<!------------>
+<tr>
+<td>Container URL</td>
+<td><input id="container_url" name="container_url" size="75" maxlength="75"
+           type="text" placeholder="https://s3.amazonaws.com/loads-docker-images/pushgo-1.4rc3.tar.bz2">
+</td>
+</tr>
+<!------------>
+<tr>
+<td>Environment Data</td>
+<td>
+<textarea id="environment_data" name="environment_data" rows="8" cols="75"
+          placeholder="PUSHGO_METRICS_STATSD_HOST=$STATSD_HOST:$STATSD_PORT\nPUSHGO_DISCOVERY_TYPE=etcd\nPUSHGO_DISCOVERY_SERVERS=http://internal-loads-test-EtcdELB-I7U9KLC25MS9-1217877132.us-east-1.elb.amazonaws.com:4001\nPUSHGO_DISCOVERY_DIR=test-$RUN_ID\nPUSHGO_DEFAULT_RESOLVE_HOST=false\nPUSHGO_DEFAULT_CURRENT_HOST=testcluster.mozilla.org\nPUSHGO_ROUTER_DEFAULT_HOST=$PRIVATE_IP\nPUSHGO_DISCOVERY_REFRESH_INTERVAL=5s"></textarea>
+</td>
+</tr>
+<!------------>
+<tr>
+<td>DNS Mapping</td>
+<td><input id="dns_name" name="dns_name" size="40" maxlength="40"
+           type="text" placeholder="testcluster.mozilla.org">
+</td>
+</tr>
+<!------------>
+
+
+
+<tr>
+<td>Port Mapping</td>
+<td><input id="port_mapping" name="port_mapping" size="40" maxlength="40"
+           type="text" placeholder="8080:8090,8081:8081,3000:3000">
+</td>
+</tr>
+<!------------>
+    <tr>
+<td>Volume Mapping</td>
+<td><input id="volume_mapping" name="volume_mapping" size="40" maxlength="40"
+           type="text" placeholder= "/var/log:/var/log/$RUN_ID:rw">
+</td>
+</tr>
+<!------------>
+    <tr>
+<td>Docker Series</td>
+<td><input id="docker_series" name="docker_series" size="20" maxlength="20"
+           type="text" placeholder="push_tester">
+</td>
+</tr>
+<!------------>
+</table>
+
+<input type="submit" value="Submit">
+
+            <label>Name:</label>
+            <input type="text" ng-model="person.name"/></br>
+            <label>Profession:</label>
+            <input type="text" ng-model="person.job"></br>
+            <label>Gender:</label>
+            <input type="radio" value="male" ng-model="person.gender"/>Male
+            <input type="radio" value="female" ng-model="person.gender"/>Female
+</form>
+    <p>{{people}}</p>
+
+    </div>
+
+</body>
+<script>
+function theController($scope) {
+  $scope.update = angular.copy.person;
+}
+</script>
+</html>

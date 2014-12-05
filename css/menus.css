@@ -1,0 +1,15 @@
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+td {
+    padding: 8px;
+}
+
+table.json {
+    width: 60%;
+    background-color: #EEEEEE;
+}
