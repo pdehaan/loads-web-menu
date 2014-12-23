@@ -24,4 +24,14 @@ function states(Memory, ComboBox){
 function theController($scope) {
     var menu = angular.copy.menu;
     $scope.update = menu; //angular.copy.menu;
+
+    $scope.instance_types = [
+      't2.micro',
+      't2.small',
+      't2.medium',
+      'm3.medium',
+      'm3.large',
+      'm3.xlarge',
+      'm3.2xlarge'
+    ];
 }

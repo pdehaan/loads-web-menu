@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+
+  <link rel="stylesheet" href="bower_components/foundation/css/normalize.css" />
+  <link rel="stylesheet" href="bower_components/foundation/css/foundation.css" />
+</head>
+<body ng-app="ProjectWizardApp">
+
+  <div ng-controller="StepCtrl">
+    <div ng-switch="step">
+      <div ng-switch-when="project">
+        <div ng-include src="'pages/step1.html'"></div>
+        <button ng-click="setStep('strategy');">Create <b>Strategy</b></button>
+      </div>
+      <div ng-switch-when="strategy">
+         <div ng-include src="'pages/step2.html'"></div>
+         <button ng-click="setStep('container');">Create <b>Container Set</b></button>
+         <button onclick="alert('saving!');">Save + Quit</button>
+         <button ng-click="clear(); setStep('project');">Cancel</button>
+      </div>
+      <div ng-switch-when="container">
+         <div ng-include src="'pages/step3.html'"></div>
+         <button ng-click="setStep('strategy');">Add <b>Strategy</b></button>
+         <button ng-click="setStep('container');">Add <b>Container Set</b></button>
+         <button onclick="alert('saving!');">Save + Quit</button>
+         <button nonclick="alert('DONE!');">Done</button>
+      </div>
+    </div>
+
+    <hr />
+    <pre>{{ menu | json }}</pre>
+  </div>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script>
+    angular.module('ProjectWizardApp', []).controller('StepCtrl',function($scope){
+      $scope.step = 'project';
+      $scope.menu = {};
+      $scope.setStep = function (step) {
+        $scope.step = step;
+      }
+      $scope.clear = function () {
+        $scope.menu = {};
+      };
+    });
+  </script>
+
+</body>
+</html>
